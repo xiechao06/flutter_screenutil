@@ -4,6 +4,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class ScreenUtil {
   static const Size defaultSize = Size(1080, 1920);
@@ -42,7 +43,7 @@ class ScreenUtil {
     _screenWidth = constraints.maxWidth;
     _screenHeight = constraints.maxHeight;
 
-    var mediaQuery = WidgetsBinding.instance.window;
+    var mediaQuery = ui.window;
     _pixelRatio = mediaQuery.devicePixelRatio;
     _statusBarHeight = mediaQuery.padding.top;
     _bottomBarHeight = mediaQuery.padding.bottom;
