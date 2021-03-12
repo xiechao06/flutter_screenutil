@@ -47,13 +47,8 @@ class ScreenUtil {
       ..allowFontScaling = allowFontScaling
       .._orientation = orientation;
 
-    if (orientation == Orientation.portrait) {
-      _instance._screenWidth = constraints.maxWidth;
-      _instance._screenHeight = constraints.maxHeight;
-    } else {
-      _instance._screenWidth = constraints.maxHeight;
-      _instance._screenHeight = constraints.maxWidth;
-    }
+    _instance._screenWidth = constraints.maxWidth;
+    _instance._screenHeight = constraints.maxHeight;
 
     var window = WidgetsBinding.instance?.window ?? ui.window;
     _instance._pixelRatio = window.devicePixelRatio;
@@ -125,7 +120,12 @@ class ScreenUtil {
   ///Font size adaptation method
   ///- [fontSize] The size of the font on the UI design, in dp.
   ///- [allowFontScaling]
-  double setSp(num fontSize, {bool? allowFontScalingSelf}) => allowFontScalingSelf == null
-      ? (allowFontScaling ? (fontSize * scaleText) * _textScaleFactor : (fontSize * scaleText))
-      : (allowFontScalingSelf ? (fontSize * scaleText) * _textScaleFactor : (fontSize * scaleText));
+  double setSp(num fontSize, {bool? allowFontScalingSelf}) =>
+      allowFontScalingSelf == null
+          ? (allowFontScaling
+              ? (fontSize * scaleText) * _textScaleFactor
+              : (fontSize * scaleText))
+          : (allowFontScalingSelf
+              ? (fontSize * scaleText) * _textScaleFactor
+              : (fontSize * scaleText));
 }
